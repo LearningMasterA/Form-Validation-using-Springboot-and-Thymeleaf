@@ -44,9 +44,12 @@ crossorigin="anonymous">
 
 
 						<div class="mb-3 form-check">
-							<input type="checkbox" class="form-check-input"
+							<input 
+							th:classappend="${#fields.hasErrors('agreed')?'is-invalid':''}"
+							type="checkbox" class="form-check-input" name="agreed"
 								id="exampleCheck1"> <label class="form-check-label"
-								for="exampleCheck1">Check me out</label>
+								for="exampleCheck1">Agree terms and Conditions</label>
+								<div th:each="e:${#fields.hasErrors('agreed')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">Agree to our terms and conditions</div>
 						</div>
 
 
