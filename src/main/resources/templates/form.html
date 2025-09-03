@@ -11,15 +11,22 @@ crossorigin="anonymous">
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 offset-md-3">
+		<div class="col-md-6 offset-md-3 mt-5">
 				<form th:action="@{/process}" method="post" th:object="${loginData}">
+				<h1>Register Here</h1>
 					<div class="mb-3 pt-5">
 
 						<label for="exampleInputEmail1" class="form-label" th:value="${loginData.userName}">UserName</label>
 						
 
 						<input type="text" name="userName" class="form-control"
+						th:classappend="${#fields.hasErrors('userName')?'is-invalid':''}"
 							id="exampleInputEmail1" aria-describedby="emailHelp">
+							<div th:each="e:${#fields.errors('userName')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">Please provide a valid username</div>
+							
+							
+							<!-- <p th:each="e:${#fields.errors('userName')}" th:text="${e}">	</p> -->
+							
 						<!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div> -->
 
@@ -28,7 +35,11 @@ crossorigin="anonymous">
 						<div class="mb-3">
 							<label for="exampleInputPassword1" class="form-label" th:value="${loginData.email}">Email</label>
 							<input type="email" name="email" class="form-control"
+							th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
 								id="exampleInputPassword1">
+								
+								<div th:each="e:${#fields.errors('email')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">Please provide a valid email</div>
+								<!-- <p th:each="e:${#fields.errors('email')}" th:text="${e}">	</p> -->
 						</div>
 
 
